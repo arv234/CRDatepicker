@@ -1,0 +1,6 @@
+framework module CRDatepicker {
+  umbrella header "CRDatepicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
