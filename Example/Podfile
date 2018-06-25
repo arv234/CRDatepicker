@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'CRDatepicker_Example' do
+  pod 'CRDatepicker', :path => '../'
+
+  target 'CRDatepicker_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
