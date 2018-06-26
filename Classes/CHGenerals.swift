@@ -8,55 +8,11 @@
 
 import UIKit
 import Foundation
-import CoreLocation
-import CoreTelephony
-
-extension String {
-    func dropLast(_ n: Int = 1) -> String {
-        return String(characters.dropLast(n))
-    }
-    var dropLast: String {
-        return dropLast()
-    }
-}
-
-extension UIColor {
-    convenience init(red: Int, green: Int, blue: Int) {
-        assert(red >= 0 && red <= 255, "Invalid red component")
-        assert(green >= 0 && green <= 255, "Invalid green component")
-        assert(blue >= 0 && blue <= 255, "Invalid blue component")
-        
-        self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
-    }
-    
-    convenience init(rgb: Int) {
-        self.init(
-            red: (rgb >> 16) & 0xFF,
-            green: (rgb >> 8) & 0xFF,
-            blue: rgb & 0xFF
-        )
-    }
-
-}
 
 extension Date {
     var ticks: UInt64 {
         return UInt64((self.timeIntervalSince1970 + 62_135_596_800) * 10_000_000)
     }
-}
-
-extension UIView {
-
-    func addBlurEffect()
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds
-        
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        self.addSubview(blurEffectView)
-    }
-
 }
 
 

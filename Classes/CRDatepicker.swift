@@ -19,7 +19,7 @@ extension Date {
     }
 }
 
-protocol CRDatepickerDelegate {
+public protocol CRDatepickerDelegate {
     func dateUpdate(_ strDate: String)
 }
 
@@ -32,7 +32,7 @@ extension Date {
     }
 }
 
-class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+public class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var year: [Int] = []
     var month: [Int] = []
@@ -53,24 +53,13 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
     
     @IBOutlet var timeCarousel: UICollectionView!
     
-    @IBOutlet var lbldate: UILabel!
+    var lbldate: UILabel! = UILabel()
 
-    var delegate: CRDatepickerDelegate?
+    public var delegate: CRDatepickerDelegate?
 
 
-    override func awakeFromNib() {
+    override public func awakeFromNib() {
         super.awakeFromNib()
-        
-        let date = Date()
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month, .day], from: date)
-        let year1: Int =  components.year!
-        
-        for i in year1 ... year1+1 {
-            year.append(i)
-        }
-        
-        dateCalc(date: date)
         
     }
     
@@ -101,10 +90,8 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         
         if year1 == currentDate().year! {
             month1 = currentDate().month!
-//            day1 = 1
         } else {
             month1 = 1
-//            day1 = 1
         }
         
         for i in month1 ... 12 {
@@ -151,10 +138,110 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         print(components)
         return day1!
     }
+    
+    let cancel: UIButton = {
+        let button = UIButton()
+        button.setTitle("Cancel", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(#colorLiteral(red: 0.9058823529, green: 0.2980392157, blue: 0.2352941176, alpha: 1), for: .normal)
+        return button
+    }()
+    
+    let set: UIButton = {
+        let button = UIButton()
+        button.setTitle("Set", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        button.setTitleColor(#colorLiteral(red: 0.003921568627, green: 0.3411764706, blue: 0.6078431373, alpha: 1), for: .normal)
+        return button
+    }()
+    
+    func createUI() {
+        
+        let myView = UIView(frame: CGRect(x: 0, y: 0, width: 326, height: 400))
+        myView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        myView.center = self.view.center
+        self.view.addSubview(myView)
+        myView.layer.cornerRadius = 5;
+        myView.layer.masksToBounds = true;
+        
+        lbldate.frame = CGRect(x: 20, y: 400-46, width: 100, height: 46)
+        lbldate.font = UIFont.systemFont(ofSize: 14)
+        myView.addSubview(lbldate)
+        
+        cancel.frame = CGRect(x: 326-200, y: 400-46, width: 100, height: 46)
+        myView.addSubview(cancel)
+        cancel.addTarget(self, action: #selector(btnCancel), for: .touchUpInside)
+        
+        set.frame = CGRect(x: 326-100, y: 400-46, width: 100, height: 46)
+        myView.addSubview(set)
+        set.addTarget(self, action: #selector(btnSet), for: .touchUpInside)
 
-    override func viewDidLoad() {
+        colvw(myView: myView)
+        
+    }
+    
+    var cellId = "cell"
+    
+    func colvw(myView : UIView) {
+        // Create an instance of UICollectionViewFlowLayout since you cant
+        // Initialize UICollectionView without a layout
+        let layout: CRCarouselCollectionViewLayout = CRCarouselCollectionViewLayout()
+//        layout.sectionInsetTop = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: myView.frame.size.width/5, height: 70)
+        
+        let layout1: CRCarouselCollectionViewLayout = CRCarouselCollectionViewLayout()
+        //        layout.sectionInsetTop = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout1.itemSize = CGSize(width: myView.frame.size.width/5, height: 70)
+        
+        let layout2: CRCarouselCollectionViewLayout = CRCarouselCollectionViewLayout()
+        //        layout.sectionInsetTop = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout2.itemSize = CGSize(width: myView.frame.size.width/5, height: 70)
+        
+        let layout3: CRCarouselCollectionViewLayout = CRCarouselCollectionViewLayout()
+        //        layout.sectionInsetTop = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout3.itemSize = CGSize(width: myView.frame.size.width/5, height: 70)
+        
+        yearCarousel = UICollectionView(frame: CGRect(x: 0, y: 10, width: 326, height: 70), collectionViewLayout: layout)
+        yearCarousel.dataSource = self
+        yearCarousel.delegate = self
+        yearCarousel.register(CRDateCell.self, forCellWithReuseIdentifier: cellId)
+        yearCarousel.showsVerticalScrollIndicator = false
+        yearCarousel.backgroundColor = UIColor.white
+        yearCarousel.tag = 100
+        myView.addSubview(yearCarousel)
+        
+        monthCarousel = UICollectionView(frame: CGRect(x: 0, y: 90, width: 326, height: 70), collectionViewLayout: layout1)
+        monthCarousel.dataSource = self
+        monthCarousel.delegate = self
+        monthCarousel.register(CRDateCell.self, forCellWithReuseIdentifier: cellId)
+        monthCarousel.showsVerticalScrollIndicator = false
+        monthCarousel.backgroundColor = UIColor.white
+        monthCarousel.tag = 101
+        myView.addSubview(monthCarousel)
+        
+        dayCarousel = UICollectionView(frame: CGRect(x: 0, y: 180, width: 326, height: 70), collectionViewLayout: layout2)
+        dayCarousel.dataSource = self
+        dayCarousel.delegate = self
+        dayCarousel.register(CRDateCell.self, forCellWithReuseIdentifier: cellId)
+        dayCarousel.showsVerticalScrollIndicator = false
+        dayCarousel.backgroundColor = UIColor.white
+        dayCarousel.tag = 102
+        myView.addSubview(dayCarousel)
+        
+        timeCarousel = UICollectionView(frame: CGRect(x: 0, y: 260, width: 326, height: 70), collectionViewLayout: layout3)
+        timeCarousel.dataSource = self
+        timeCarousel.delegate = self
+        timeCarousel.register(CRDateCell.self, forCellWithReuseIdentifier: cellId)
+        timeCarousel.showsVerticalScrollIndicator = false
+        timeCarousel.backgroundColor = UIColor.white
+        timeCarousel.tag = 103
+        myView.addSubview(timeCarousel)
+    }
+
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
+        createUI()
         
         self.lbldate.text = CHGenerals.datetostring(Date())
         
@@ -162,14 +249,25 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         monthCarousel.reloadData()
         dayCarousel.reloadData()
         timeCarousel.reloadData()
+        
+        let date = Date()
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        let year1: Int =  components.year!
+        
+        for i in year1 ... year1+1 {
+            year.append(i)
+        }
+        
+        dateCalc(date: date)
 
         
     }
-    
+    public
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+    public
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView.tag == 100 {
@@ -188,11 +286,11 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         
         return 0
     }
-    
+    public
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell : CRDateCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CRDateCell
         
-        let label = cell.contentView.viewWithTag(10)! as! UILabel
+        let label = cell.nameLabel //cell.contentView.viewWithTag(10)! as! UILabel
         
         if collectionView.tag == 100 {
             label.text = "\(year[indexPath.item])"
@@ -217,7 +315,7 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         
         return cell
     }
-    
+    public
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         var visibleRect = CGRect()
         
@@ -311,7 +409,7 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         lbldate.text = strD
 
     }
-    
+    public
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         
@@ -405,7 +503,7 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         return date!
     }
     
-    @IBAction func btnCancel(_ sender: Any) {
+    @objc func btnCancel() {
         
         self.dismiss(animated: true) { 
             
@@ -413,7 +511,7 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         
     }
     
-    @IBAction func btnSet(_ sender: Any) {
+    @objc func btnSet() {
         self.dismiss(animated: true) {
             
             let strD = "\(String(format: "%02d", self.day[self.inxD]))-\(String(format: "%02d", self.month[self.inxM]))-\(self.year[self.inxY]) \(self.time[self.inxT])"
@@ -432,15 +530,15 @@ class CRDatepicker: UIViewController, UICollectionViewDelegate, UICollectionView
         
     }
     
-    class func instanceFromNib() -> UIViewController {
+    public class func create() -> UIViewController {
         
-        let vc : CRDatepicker = UIStoryboard(name: "CHPickerSB", bundle: nil).instantiateViewController(withIdentifier: "CRDatepicker") as! CRDatepicker
-        vc.modalPresentationStyle = .overCurrentContext
+        let vc1 : CRDatepicker = CRDatepicker()
+        vc1.modalPresentationStyle = .overCurrentContext
+        return vc1
         
-        return vc
     }
     
-    func show(obj: UIViewController) {
+    public func showCRDate(obj: UIViewController) {
         
         obj.present(self, animated: true, completion: nil)
         

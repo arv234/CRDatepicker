@@ -8,18 +8,10 @@
 
 import UIKit
 
-///This methods will be called on the delegate whenever a centered element is changing. In fact as element in focus is to be intended
-///as element currently centered
 @objc public protocol FocusChangeDelegate: class {
-    ///This method will signal to the delegate that the element in focus will change.
-    ///- parameter container: The object that is tracking the focused element
-    ///- parameter inFocus: The element currently in focus (before the change)
-    ///- parameter newInFocus: The new element that will be in focus.
+
     func focusContainer(_ container: FocusedContaining, willChangeElement inFocus: Int, to newInFocus: Int)
-    
-    ///This method will signal to the delegate that the element in fucs is changed.
-    ///- parameter container: The object that is tracking the focused element
-    ///- parameter inFocus: The element currently in focus
+
     func focusContainer(_ container: FocusedContaining, didChangeElement inFocus: Int)
 }
 
@@ -32,14 +24,6 @@ import UIKit
     weak var focusChangeDelegate: FocusChangeDelegate? { get set }
 }
 
-/**
- This collection view layout is an horizontal layout that will allow pagination for items smaller than collection.
- The element currently on the center is trackable with delegate pattern through the FocusChangeDelegate protocol.
- 
- This collectionView layout handles just one section, of homogeneus elements, therefore just one itemSize is allowed.
- It handles header and footer where the height is specified by the UICollectionViewFlowLayout delegate methods
- collectionView(_: layout: referenceSizeForHeaderInSection) and collectionView(_: layout: referenceSizeForFooterInSection)
- */
 @IBDesignable @objcMembers
 open class CRSnapToCenterCollectionViewLayout: UICollectionViewLayout, FocusedContaining {
     //MARK: - Inspectable properties
@@ -191,12 +175,6 @@ open class CRSnapToCenterCollectionViewLayout: UICollectionViewLayout, FocusedCo
         return result
     }
     
-    ///This method returns the frame for an item at a certain indexPath. This method performs pure math operations to compute the frame, therefore
-    ///there are no checks in place in ordert o ensure that the equested tems is actually existing in the array of items.
-    ///- parameter indexPath: The indexPath of the item you want to know the frame of.
-    ///- returns: A CGRect representing the frame of the requested item.
-    ///- warning: The item might not exist. This method performs no check around item counts and item existence. Using pure math, it computes the position
-    ///and the hypotetical size of the item. It is developer's responsibility to ask for item that actually exists in their collection.
     internal func frameForItem(at indexPath: IndexPath) -> CGRect {
         let x = sectionInsetLeft + (itemSize.width + interitemSpacing) * CGFloat(indexPath.item)
         let y = (headerHeight ?? 0) + sectionInsetTop
@@ -321,10 +299,7 @@ open class CRSnapToCenterCollectionViewLayout: UICollectionViewLayout, FocusedCo
     }
     
     open override func prepareForTransition(from oldLayout: UICollectionViewLayout) {
-        //This method will be called when this layout is applied to an existing collectionView with different layout.
-        //At this point the layout is still not changed for the collectionView, therefore we can query it to find out which would be the items that
-        //we must display. If the layout is a FocusedContaining, then we want to give focus to the element currently in focus in the old layout.
-        //If this is not the case then we will assume that the focused item is the central one in the array of visible elements.
+
         if let centerLayout = oldLayout as? FocusedContaining {
             currentInFocus = centerLayout.currentInFocus
         } else if let collection = oldLayout.collectionView {
@@ -376,10 +351,7 @@ open class CRSnapToCenterCollectionViewLayout: UICollectionViewLayout, FocusedCo
     
     
     open override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
-        //This method is called everytime there is a change in the collection view size or in the collection view offset.
-        //The bounds in this case is to be intended as "current visible frame". We want to update the current in focus 
-        //just in case of scroll events, and not if the size changes, because in that case we want to preserve the element
-        //in the center to be the same.
+
         if currentCollectionSize == newBounds.size {
             updateCurrentInFocus(in: newBounds)
         }

@@ -8,32 +8,18 @@
 
 import UIKit
 
-/**
- This collectionViewLayout is an CRInfiniteCollectionViewLayout. It hinerits therefore all the trait of
- infinite collection view and snap to center layout. Infite scroll view and snap to center behaviors are
- disableabe. This layout will configure the items so that the items that are not currenlty on focus will
- appear zoomed out, while the only item at full itemSize will be the one in focus.
- */
 @IBDesignable @objcMembers
 open class CRCarouselCollectionViewLayout: CRInfiniteCollectionViewLayout {
-    //MARK: - Inspectable properties
-    ///This property wil allow to enable or disable the intinite scrolling behavior. The default value is true.
-    
-    ///This property determines how fast each item not in focus will reach the minimum scale factor. The scale
-    ///factor of each item depends from the item.center position related to the collection's center, and it 
-    /// will be 1 if the element is in the center, and *minimumScaleFactor* if
-    ///|item.center - collection.center| >= *scalingOffset*
+
     public var scalingOffset: CGFloat = 200
     
-    ///The minimum zoom scale factor for items not in focus. The factor used for each item will be proportional 
-    ///to the distance of its center to the collection's center.
+
     public var minimumScaleFactor: CGFloat = 0.10
     
     //MARK: - Utility properties
     
     override var canInfiniteScroll: Bool { return false }
     
-    //MARK: - Layout implementation
     //MARK: Preparation
 
     open override func prepare() {
@@ -57,14 +43,12 @@ open class CRCarouselCollectionViewLayout: CRInfiniteCollectionViewLayout {
         
         attributes.alpha = scale
         
+        
+        
     }
     
     open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let attributes = super.layoutAttributesForElements(in: rect) else { return nil }
-        //Here we rely on super layout implementation, because we know that the parent layout is able to handle the 
-        //situation of no infinite scrolling, in case of *canInfiniteScroll* to be false. Since we did override the 
-        //*canInfiniteScroll* to consider also the *isInfiniteScrollEnabled* property, we are safe to have the required 
-        //behavior from this layout.
         
         //All we have to do at this point is to apply the scale factor to the attributes we already have.
         for attribute in attributes where attribute.representedElementCategory == .cell {

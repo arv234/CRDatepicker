@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import CRDatepicker
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CRDatepickerDelegate {
+    
+    func dateUpdate(_ strDate: String) {
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let vc : CRDatepicker = CRDatepicker.create() as! CRDatepicker
+        vc.delegate = self
+        vc.showCRDate(obj: self)
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,8 +10,13 @@
 		29B3307566799BCEE7CD98D697A0602A /* Pods-CRDatepicker_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AC14321B518B4DD017C565067AC83148 /* Pods-CRDatepicker_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2CF064F72A6B464A1E7A855CF5404435 /* Pods-CRDatepicker_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB4C2B9BDE877FC8B3F30050AABA6531 /* Pods-CRDatepicker_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		56E12FCE83F0383AD7F2AC0C35D934B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		5FCCD8D620E113F600FC3549 /* CRDatepicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCD8D020E113F500FC3549 /* CRDatepicker.swift */; };
+		5FCCD8D720E113F600FC3549 /* CRCarouselCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCD8D120E113F500FC3549 /* CRCarouselCollectionViewLayout.swift */; };
+		5FCCD8D820E113F600FC3549 /* CRInfiniteCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCD8D220E113F500FC3549 /* CRInfiniteCollectionViewLayout.swift */; };
+		5FCCD8D920E113F600FC3549 /* CHGenerals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCD8D320E113F500FC3549 /* CHGenerals.swift */; };
+		5FCCD8DA20E113F600FC3549 /* CRSnapToCenterCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCD8D420E113F500FC3549 /* CRSnapToCenterCollectionViewLayout.swift */; };
+		5FCCD8DD20E2594F00FC3549 /* CRDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FCCD8DC20E2594F00FC3549 /* CRDateCell.swift */; };
 		61BCA170FFD16F902B84A76B78757EA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		6BFE24DB332C524A7C3988C51EDA7492 /* ReplaceMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D22DAD97F48019C201EDDAC4D1686 /* ReplaceMe.swift */; };
 		8894147E20C4176A6D7C0B5A068C5403 /* CRDatepicker-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = D8670ED6F401122B9A58DFC4CF6FFCDA /* CRDatepicker-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		908C8FC196DC634456453B556D77789F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 		B41D15BDE4F21D52407556BBD6D5BB1A /* Pods-CRDatepicker_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FB8863C76DFDD91DF2429F7E52A0850F /* Pods-CRDatepicker_Tests-dummy.m */; };
@@ -35,32 +40,37 @@
 		0FEB559A2EE02A31541AAD4A5B5C88E1 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1406269D008C2E6350412A34E1CA9AFB /* Pods-CRDatepicker_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CRDatepicker_Example-resources.sh"; sourceTree = "<group>"; };
 		192F3390101D7C9C584EFEBC68937C4F /* Pods-CRDatepicker_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CRDatepicker_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		1E9D22DAD97F48019C201EDDAC4D1686 /* ReplaceMe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ReplaceMe.swift; path = CRDatepicker/Classes/ReplaceMe.swift; sourceTree = "<group>"; };
 		2138A7F972777F94A9EF9EF7AA4882EE /* Pods-CRDatepicker_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CRDatepicker_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		248F5DBB09189434B7F9FE8E92BD1DBB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A7CECEB5EB9E65A2295C3A4EE49F0D7 /* Pods-CRDatepicker_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CRDatepicker_Tests-resources.sh"; sourceTree = "<group>"; };
-		3E04B29FE000CC834419EEAD9652CD48 /* Pods_CRDatepicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CRDatepicker_Tests.framework; path = "Pods-CRDatepicker_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E04B29FE000CC834419EEAD9652CD48 /* Pods_CRDatepicker_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CRDatepicker_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F2C0514D2C3D15BB09976F4CB5E2E98 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FE8F6FFE68C464FE4294B6A63CEDB0E /* CRDatepicker-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CRDatepicker-prefix.pch"; sourceTree = "<group>"; };
 		58E157F5AEE095894D0D124D3C5D0A43 /* Pods-CRDatepicker_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CRDatepicker_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		63C8C920E12B61372A24D7F8583A255E /* Pods-CRDatepicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CRDatepicker_Example.modulemap"; sourceTree = "<group>"; };
+		5FCCD8D020E113F500FC3549 /* CRDatepicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRDatepicker.swift; sourceTree = "<group>"; };
+		5FCCD8D120E113F500FC3549 /* CRCarouselCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRCarouselCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5FCCD8D220E113F500FC3549 /* CRInfiniteCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRInfiniteCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5FCCD8D320E113F500FC3549 /* CHGenerals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CHGenerals.swift; sourceTree = "<group>"; };
+		5FCCD8D420E113F500FC3549 /* CRSnapToCenterCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CRSnapToCenterCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5FCCD8DC20E2594F00FC3549 /* CRDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CRDateCell.swift; sourceTree = "<group>"; };
+		63C8C920E12B61372A24D7F8583A255E /* Pods-CRDatepicker_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CRDatepicker_Example.modulemap"; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		8132F20913FAC67D17322D6205A5B2FC /* CRDatepicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CRDatepicker.framework; path = CRDatepicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8132F20913FAC67D17322D6205A5B2FC /* CRDatepicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CRDatepicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845ADBD49F4D1AF555DF4F67CBC59751 /* Pods-CRDatepicker_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CRDatepicker_Example-dummy.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9ABDC5D407BFF05FBA9D649EFE635DB9 /* Pods-CRDatepicker_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CRDatepicker_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A1A3857E5EEE73716C453EF1B168FE38 /* Pods-CRDatepicker_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CRDatepicker_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		AC14321B518B4DD017C565067AC83148 /* Pods-CRDatepicker_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CRDatepicker_Example-umbrella.h"; sourceTree = "<group>"; };
-		C2B07F95A3B21421CAD24C95CBB83C2B /* Pods_CRDatepicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_CRDatepicker_Example.framework; path = "Pods-CRDatepicker_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2B07F95A3B21421CAD24C95CBB83C2B /* Pods_CRDatepicker_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CRDatepicker_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53767B786C73F2908E30151E95B2D60 /* Pods-CRDatepicker_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CRDatepicker_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		D5DCE1B6FB783AA055A9CC6758203822 /* CRDatepicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = CRDatepicker.modulemap; sourceTree = "<group>"; };
+		D5DCE1B6FB783AA055A9CC6758203822 /* CRDatepicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = CRDatepicker.modulemap; sourceTree = "<group>"; };
 		D8670ED6F401122B9A58DFC4CF6FFCDA /* CRDatepicker-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CRDatepicker-umbrella.h"; sourceTree = "<group>"; };
 		E5DC95CD815774DB35A3E5AA4D61D3DE /* Pods-CRDatepicker_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CRDatepicker_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		ECDC9553359B5C8BB062EC04F24DE421 /* CRDatepicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CRDatepicker-dummy.m"; sourceTree = "<group>"; };
 		F42F38FC5D83DB3A552A35DC0BB002FF /* CRDatepicker.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CRDatepicker.xcconfig; sourceTree = "<group>"; };
 		FB4C2B9BDE877FC8B3F30050AABA6531 /* Pods-CRDatepicker_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-CRDatepicker_Tests-umbrella.h"; sourceTree = "<group>"; };
 		FB8863C76DFDD91DF2429F7E52A0850F /* Pods-CRDatepicker_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CRDatepicker_Tests-dummy.m"; sourceTree = "<group>"; };
-		FD0EA6D21E814D04BDD84E49BF742B6A /* Pods-CRDatepicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-CRDatepicker_Tests.modulemap"; sourceTree = "<group>"; };
+		FD0EA6D21E814D04BDD84E49BF742B6A /* Pods-CRDatepicker_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-CRDatepicker_Tests.modulemap"; sourceTree = "<group>"; };
 		FD2DDB2CA666E988D75E0EE24D715973 /* Pods-CRDatepicker_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CRDatepicker_Example-frameworks.sh"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -109,6 +119,19 @@
 				F3A25B44C1996E6F023F4C8004B66ED9 /* Pods-CRDatepicker_Tests */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		5FCCD8CF20E113F500FC3549 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5FCCD8D020E113F500FC3549 /* CRDatepicker.swift */,
+				5FCCD8DC20E2594F00FC3549 /* CRDateCell.swift */,
+				5FCCD8D320E113F500FC3549 /* CHGenerals.swift */,
+				5FCCD8D120E113F500FC3549 /* CRCarouselCollectionViewLayout.swift */,
+				5FCCD8D420E113F500FC3549 /* CRSnapToCenterCollectionViewLayout.swift */,
+				5FCCD8D220E113F500FC3549 /* CRInfiniteCollectionViewLayout.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		76F9C9E8BD8265C7DC92F0C2F174D47C /* Pods-CRDatepicker_Example */ = {
@@ -173,7 +196,7 @@
 		C43EA7CC6CDFDE39137ADABC13ED80E5 /* CRDatepicker */ = {
 			isa = PBXGroup;
 			children = (
-				1E9D22DAD97F48019C201EDDAC4D1686 /* ReplaceMe.swift */,
+				5FCCD8CF20E113F500FC3549 /* Classes */,
 				B5A27363C40E2075AE6CB719743DDF06 /* Support Files */,
 			);
 			name = CRDatepicker;
@@ -296,6 +319,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					F86B611A030B5BE5D42C6BD9391A1B25 = {
+						LastSwiftMigration = 0920;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -337,8 +365,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FCCD8D620E113F600FC3549 /* CRDatepicker.swift in Sources */,
+				5FCCD8DD20E2594F00FC3549 /* CRDateCell.swift in Sources */,
+				5FCCD8DA20E113F600FC3549 /* CRSnapToCenterCollectionViewLayout.swift in Sources */,
 				C77D7C1900603D943718DA654C8641F9 /* CRDatepicker-dummy.m in Sources */,
-				6BFE24DB332C524A7C3988C51EDA7492 /* ReplaceMe.swift in Sources */,
+				5FCCD8D720E113F600FC3549 /* CRCarouselCollectionViewLayout.swift in Sources */,
+				5FCCD8D920E113F600FC3549 /* CHGenerals.swift in Sources */,
+				5FCCD8D820E113F600FC3549 /* CRInfiniteCollectionViewLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F42F38FC5D83DB3A552A35DC0BB002FF /* CRDatepicker.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -571,6 +605,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F42F38FC5D83DB3A552A35DC0BB002FF /* CRDatepicker.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
