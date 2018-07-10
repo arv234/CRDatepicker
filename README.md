@@ -11,6 +11,11 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+## Screenshot
+
+![crdatepickerscreen](https://user-images.githubusercontent.com/7077860/42502143-53f2a51e-8446-11e8-81fb-71627e63121c.png)
+
+
 ## Installation
 
 CRDatepicker is available through [CocoaPods](https://cocoapods.org). To install
@@ -18,6 +23,31 @@ it, simply add the following line to your Podfile:
 
 ```ruby
 pod 'CRDatepicker'
+```
+
+How to use
+----------
+
+**STEP 1**:
+
+Trigger Date picker
+```swift
+import CRDatepicker
+
+let vc : CRDatepicker = CRDatepicker.create() as! CRDatepicker
+vc.delegate = self
+vc.showCRDate(obj: self)
+```
+
+**STEP 2**:
+
+Date picker callback
+```swift
+CRDatepickerDelegate
+
+func dateUpdate(_ strDate: String) {
+
+}
 ```
 
 ## Author
